@@ -16,7 +16,7 @@ function start() {
       case 0x02: //LOD
         ram[++i] = registers[++i];
         break;
-      case 0x0f: //TST
+      case 0x0F: //TST
         alert(ram);
         alert(registers);
         break;
@@ -28,7 +28,11 @@ function start() {
 }
 
 function pushInstruction(code) {
-  ram[ram.]
+  for (var i=0;i<ramSize;i++) {
+    if (ram[i] == 0) {
+      ram[i] = code;
+    }
+  }
 }
 
 function pushFile(file) {
