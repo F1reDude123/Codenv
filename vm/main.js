@@ -1,9 +1,10 @@
 class VM {
   ramSize;
   registerCount;
-  constructor(ramSize = 1024, registerCount = 50){this.ramSize=ramSize;this.registerCount=registerCount}
-  ram = new Uint8Array(this.ramSize);
-  registers = new Uint8Array(this.registerCount);
+  constructor(ramSize = 1024, registerCount = 50) {
+    this.ram = new Uint8Array(ramSize);
+    this.registers = new Uint8Array(registerCount);
+  }
   ramidx=0;
   
   start() {
@@ -30,6 +31,8 @@ class VM {
         case 0xFF: //STP
           running = false;
           break;
+        default:
+          throw new Error("Opcode not recognized");
       }
     }
   }
