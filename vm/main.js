@@ -41,3 +41,9 @@ function pushInstruction(code) {
     }
   }
 }
+
+function pushFile(file) {
+  var reader = new FileReader();
+  reader.onload = function(){ram.set(reader.result.split(" "), 0)}
+  reader.readAsBinaryString(file);
+}
