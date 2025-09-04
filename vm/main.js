@@ -3,30 +3,32 @@ var registerCount = 50;
 var ram = new Uint8Array(ramSize);
 var registers = new Uint8Array(registerCount);
 
-var running = true;
-while (running) {
+function start() {
+  var running = true;
   var i=0;
-  switch(ram[i++]) {
-    case 0x00: //NIL
-      break;
-    case 0x01: //STR
-      registers[++i] = ram[++i];
-      break;
-    case 0x02: //LOD
-      ram[++i] = registers[++i];
-      break;
-    case 0x0f: //TST
-      alert(ram);
-      alert(registers);
-      break;
-    case 0xFF: //STP
-      running = false;
-      break;
+  while (running) {
+    switch(ram[i++]) {
+      case 0x00: //NIL
+        break;
+      case 0x01: //STR
+        registers[++i] = ram[++i];
+        break;
+      case 0x02: //LOD
+        ram[++i] = registers[++i];
+        break;
+      case 0x0f: //TST
+        alert(ram);
+        alert(registers);
+        break;
+      case 0xFF: //STP
+        running = false;
+        break;
+    }
   }
 }
 
 function pushInstruction(code) {
-  ram.push(code);
+  ram[ram.]
 }
 
 function pushFile(file) {
