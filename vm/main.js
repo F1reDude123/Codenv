@@ -2,6 +2,7 @@ var ramSize = 1024;
 var registerCount = 50;
 var ram = new Uint8Array(ramSize);
 var registers = new Uint8Array(registerCount);
+var ramidx=0;
 
 function start() {
   var running = true;
@@ -32,16 +33,11 @@ function start() {
 }
 
 function pushInstruction(code) {
-  for (var i=0;i<ramSize;i++) {
-    if (ram[i] == 0) {
-      ram[i] = code;
+  for (;;) {
+    if (ram[ramidx] == 0) {
+      ram[ramidx] = code;
+      ramidx++;
       break;
     }
   }
-}
-
-function pushFile(file) {
-  var reader = new FileReader();
-  reader.onload = function() {reader.result.split(" ").forEach(e => { ram.set(e, 0) })};
-  reader.readAsBinaryString(file);
 }
