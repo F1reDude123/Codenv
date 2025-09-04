@@ -38,9 +38,7 @@ class VM {
     this.ram[this.ramidx] = code;
     this.ramidx++;
   }
-}
-function pushFile(file) {
-  var reader = new FileReader();
-  reader.onload = function(){ram.set(reader.result.split(" "), 0)}
-  reader.readAsBinaryString(file);
+  pushBinary(bin) {
+    this.ram.set(bin, 0);
+  }
 }
