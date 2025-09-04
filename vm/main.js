@@ -11,14 +11,18 @@ function start() {
       case 0x00: //NIL
         break;
       case 0x01: //STR
-        registers[++i] = ram[++i];
+        var reg = i++;
+        var mem = i++;
+        registers[reg] = ram[mem];
         break;
       case 0x02: //LOD
-        ram[++i] = registers[++i];
+        var mem = i++;
+        var reg = i++;
+        ram[mem] = registers[reg];
         break;
       case 0x0F: //TST
-        alert(ram);
-        alert(registers);
+        alert(ram.toString());
+        alert(registers.toString());
         break;
       case 0xFF: //STP
         running = false;
