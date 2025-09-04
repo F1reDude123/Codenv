@@ -1,7 +1,7 @@
 class VM {
+  ramSize;
+  registerCount;
   constructor(ramSize = 1024, registerCount = 50){this.ramSize=ramSize;this.registerCount=registerCount}
-  ramSize = 1024;
-  registerCount = 50;
   ram = new Uint8Array(this.ramSize);
   registers = new Uint8Array(this.registerCount);
   ramidx=0;
