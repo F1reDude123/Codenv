@@ -31,12 +31,13 @@ function pushInstruction(code) {
   for (var i=0;i<ramSize;i++) {
     if (ram[i] == 0) {
       ram[i] = code;
+      break;
     }
   }
 }
 
 function pushFile(file) {
   var reader = new FileReader();
-  reader.onload = function() reader.result.split(" ").forEach(e => { ram.push(e) });
+  reader.onload = function() {reader.result.split(" ").forEach(e => { ram.set(e, 0) })};
   reader.readAsBinaryString(file);
 }
