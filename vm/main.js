@@ -33,7 +33,7 @@ function start() {
 }
 
 function pushInstruction(code) {
-  for (;;) {
+  while (true) {
     if (ram[ramidx] == 0) {
       ram[ramidx] = code;
       ramidx++;
