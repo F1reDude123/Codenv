@@ -4,6 +4,7 @@ class VM {
   ram = new Uint8Array(ramSize);
   registers = new Uint8Array(registerCount);
   ramidx=0;
+  constructor(){}
   
   start() {
     var i=0;
