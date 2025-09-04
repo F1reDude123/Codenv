@@ -10,7 +10,7 @@ class VM {
     var i=0;
     var running = true;
     while (running) {
-      switch(ram[i++]) {
+      switch(this.ram[i++]) {
         case 0x00: //NIL
           break;
         case 0x01: //STR
