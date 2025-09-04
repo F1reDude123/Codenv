@@ -35,13 +35,8 @@ class VM {
   }
   
   pushInstruction(code) {
-    while (true) {
-      if (ram[ramidx] == 0) {
-        ram[ramidx] = code;
-        ramidx++;
-        break;
-      }
-    }
+    this.ram[this.ramidx] = code;
+    this.ramidx++;
   }
 }
 function pushFile(file) {
