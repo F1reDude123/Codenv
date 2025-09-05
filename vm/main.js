@@ -25,21 +25,21 @@ class VM {
           this.ram[mem] = this.registers[reg];
           break;
         case 0x03: //ADD
-          var add1 = this.registers[this.ram[i++]];
-          var add2 = this.registers[this.ram[i++]];
-          add1 = add1+add2;
+          var add1 = this.ram[i++];
+          var add2 = this.ram[i++];
+          this.registers[add1] = this.registers[add1]+this.registers[add2];
         case 0x04: //SUB
-          var add1 = this.registers[this.ram[i++]];
-          var add2 = this.registers[this.ram[i++]];
-          add1 = add1-add2;
+          var sub1 = this.ram[i++];
+          var sub2 = this.ram[i++];
+          this.registers[sub1] = this.registers[sub1]-this.registers[sub2];
         case 0x05: //MUL
-          var add1 = this.registers[this.ram[i++]];
-          var add2 = this.registers[this.ram[i++]];
-          add1 = add1*add2;
+          var mul1 = this.ram[i++];
+          var mul2 = this.ram[i++];
+          this.registers[mul1] = this.registers[mul1]*this.registers[mul2];
         case 0x06: //DIV
-          var add1 = this.registers[this.ram[i++]];
-          var add2 = this.registers[this.ram[i++]];
-          add1 = add1/add2;
+          var div1 = this.ram[i++];
+          var div2 = this.ram[i++];
+          this.registers[add1] = this.registers[div1]/this.registers[div2];
         case 0x0F: //TST
           alert(Array.from(this.ram.slice(0, 16)));
           alert(Array.from(this.registers.slice(0, 16)));
