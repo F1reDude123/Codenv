@@ -42,7 +42,7 @@ class VM {
         case 0x06: //DIV
           var div1 = this.ram[i++];
           var div2 = this.ram[i++];
-          this.registers[add1] = this.registers[div1]/this.registers[div2];
+          this.registers[div1] = this.registers[div1]/this.registers[div2];
           break;
         case 0x0F: //TST
           alert(Array.from(this.ram.slice(0, 16)));
