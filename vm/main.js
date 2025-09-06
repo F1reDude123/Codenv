@@ -2,8 +2,8 @@ class VM {
   ramSize;
   registerCount;
   constructor(ramSize = 1024, registerCount = 64) {
-    this.ram = new Uint16Array(ramSize);
-    this.registers = new Uint16Array(registerCount);
+    this.ram = new Uint8Array(ramSize);
+    this.registers = new Uint8Array(registerCount);
     this.gpu = {
       "enabled":false,
       "width":0,
