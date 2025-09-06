@@ -38,7 +38,7 @@ class VM {
           if (mem < 0xF0) {
             this.ram[mem] = val;
           }
-          else if (mem < 0xFF) {
+          else {
             switch(mem) {
               case 0xF0:
                 this.gpu["enabled"] = true;
@@ -66,6 +66,8 @@ class VM {
                 }
                 this.ctx.putImageData(imageData, 0, 0);
                 break;
+              default:
+                this.ram[mem] = val;
             }
           }
         break;
