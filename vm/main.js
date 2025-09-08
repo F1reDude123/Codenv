@@ -1,17 +1,20 @@
 class VM {
-  constructor() {this.canvas.height=1080;
-  this.canvas.width=1920;}
+  constructor() {
+    this.canvas = document.createElement("canvas");
+    this.canvas.width = 1920;
+    this.canvas.height = 1080;
+    this.ctx = this.canvas.getContext("2d");
+  }
+
   ram = new Uint32Array(8291428);
   registers = new Uint32Array(64);
   gpu = {
-    "enabled":false,
-    "width":0,
-    "height":0,
-    "fbAddr":0
-  }
-  canvas = document.createElement("canvas");
-  ctx = this.canvas.getContext("2d");
-  ramidx=0;
+    enabled: false,
+    width: 0,
+    height: 0,
+    fbAddr: 0
+  };
+  ramidx = 0;
   
   start() {
     var i=0;
