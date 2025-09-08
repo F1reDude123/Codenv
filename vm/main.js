@@ -1,5 +1,6 @@
 class VM {
-  constructor() {}
+  constructor() {this.canvas.height=1080;
+  this.canvas.width=1920;}
   ram = new Uint32Array(8291428);
   registers = new Uint32Array(64);
   gpu = {
