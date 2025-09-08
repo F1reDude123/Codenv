@@ -1,17 +1,15 @@
 class VM {
-  ramSize;
-  registerCount;
   constructor() {}
-  this.ram = new Uint32Array(8291428);
-  this.registers = new Uint32Array(64);
-  this.gpu = {
+  ram = new Uint32Array(8291428);
+  registers = new Uint32Array(64);
+  gpu = {
     "enabled":false,
     "width":0,
     "height":0,
     "fbAddr":0
   }
-  this.canvas = document.createElement("canvas");
-  this.ctx = this.canvas.getContext("2d");
+  canvas = document.createElement("canvas");
+  ctx = this.canvas.getContext("2d");
   ramidx=0;
   
   start() {
@@ -49,13 +47,13 @@ class VM {
                 this.gpu.height = val;
                 break;
               case 1027:
-                var imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+                var imageData = this.ctx.getImageData(0, 0, this.gpu.width, this.gpu.height);
                 var data = imageData.data;
                 for (var pix=0;pix<data.length;) {
-                  data[pix] = ram[pix+1028];
-                  data[++pix] = ram[pix+1028];
-                  data[++pix] = ram[pix+1028];
-                  data[++pix] = ram[pix+1028];
+                  data[pix] = this.ram[pix+1028];
+                  data[++pix] = this.ram[pix+1028];
+                  data[++pix] = this.ram[pix+1028];
+                  data[++pix] = this.ram[pix+1028];
                 }
                 this.ctx.putImageData(imageData, 0, 0);
                 break;
