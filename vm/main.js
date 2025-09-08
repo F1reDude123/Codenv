@@ -57,7 +57,7 @@ class VM {
                   data[pix] = this.ram[pix+1028];
                   data[++pix] = this.ram[pix+1028];
                   data[++pix] = this.ram[pix+1028];
-                  data[++pix] = this.ram[pix+1028];
+                  data[++pix] = 255;
                 }
                 this.ctx.putImageData(imageData, 0, 0);
                 break;
