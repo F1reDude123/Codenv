@@ -53,7 +53,7 @@ class VM {
               case 1027:
                 var imageData = this.ctx.getImageData(0, 0, this.gpu.width, this.gpu.height);
                 var data = imageData.data;
-                for (var pix=0;pix<data.length;pix+=4) {
+                for (var pix=0;pix<data.length;pix++) {
                   var pixel = this.ram[1028 + pix];
                   var r = (pixel >> 24) & 0xFF;
                   var g = (pixel >> 16) & 0xFF;
