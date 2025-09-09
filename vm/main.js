@@ -36,10 +36,10 @@ class VM {
         case 0x00000003: //LDI
           var mem = this.ram[i++];
           var val = this.ram[i++];
-          if (mem < 1024 || mem > 1028) {
+          if (mem < 1024 || mem >= 1028) {
             this.ram[mem] = val;
           }
-          else if (mem < 1028 && mem > 1024) {
+          else if (mem < 1028 && mem >= 1024) {
             switch(mem) {
               case 1024:
                 this.gpu.enabled = true;
