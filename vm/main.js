@@ -55,8 +55,8 @@ class VM {
                 var data = imageData.data;
                 for (var pix = 0; pix < data.length; pix += 4) {
                   data[pix] = (this.ram[1028+pix]>>24)&0xFF;
-                  data[pix+1] = (this.ram[1028+pix+1]>>16)&0xFF;
-                  data[pix+2] = (this.ram[1028+pix+2]>>8)&0xFF;
+                  data[pix+1] = (this.ram[1028+pix]>>16)&0xFF;
+                  data[pix+2] = (this.ram[1028+pix]>>8)&0xFF;
                   data[pix+3] = 255;
                 }
                 this.ctx.putImageData(imageData, 0, 0);
