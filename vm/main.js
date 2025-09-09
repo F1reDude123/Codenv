@@ -53,13 +53,16 @@ class VM {
               case 1027:
                 var imageData = this.ctx.getImageData(0, 0, this.gpu.width, this.gpu.height);
                 var data = imageData.data;
-                for (let p = 0; p < (this.gpu.width * this.gpu.height); p++) {
-                  let pixel = this.ram[1028 + p] >>> 0;
-                  let base = p * 4;
-                  data[base]     = (pixel >> 24) & 0xFF; // R
-                  data[base + 1] = (pixel >> 16) & 0xFF; // G
-                  data[base + 2] = (pixel >> 8)  & 0xFF; // B
-                  data[base + 3] = pixel & 0xFF;         // A
+                for (var pix=0;pix<data.length;pix+=4) {
+                  var pixel = this.ram[1028 + pix];
+                  var r = (pixel >> 24) & 0xFF;
+                  var g = (pixel >> 16) & 0xFF;
+                  var b = (pixel >> 8)  & 0xFF;
+                  var a = pixel & 0xFF;
+                  data[pix] = r;
+                  data[pix+1] = g;
+                  data[pix+2] = b;
+                  data[pix+3] = 255;
                 }
                 this.ctx.putImageData(imageData, 0, 0);
                 break;
