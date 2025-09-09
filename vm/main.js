@@ -54,16 +54,10 @@ class VM {
                 var imageData = this.ctx.getImageData(0, 0, this.gpu.width, this.gpu.height);
                 var data = imageData.data;
                 for (var pix = 0; pix < data.length; pix += 4) {
-                  var pixelIndex = pix / 4;
-                  var pixel = this.ram[1028 + pixelIndex];
-                  var r = (pixel >> 24) & 0xFF;
-                  var g = (pixel >> 16) & 0xFF;
-                  var b = (pixel >> 8)  & 0xFF;
-                  var a = pixel & 0xFF;
-                  data[pix] = r;
-                  data[pix + 1] = g;
-                  data[pix + 2] = b;
-                  data[pix + 3] = a;
+                  data[pix] = (this.ram[1028+pix]>>24)&0xFF;
+                  data[pix+1] = (this.ram[1028+pix+1]>>16)&0xFF;
+                  data[pix+2] = (this.ram[1028+pix+2]>>8)&0xFF;
+                  data[pix+3] = 255;
                 }
                 this.ctx.putImageData(imageData, 0, 0);
                 break;
